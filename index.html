@@ -9,6 +9,8 @@
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 ::selection{background:rgba(196,93,62,.25)}
 body{font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* LANDING */
 .landing{min-height:100vh;background:#1A1714;color:#F5F0EA;position:relative}
 .bg1{position:fixed;top:-20%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(196,93,62,.07) 0%,transparent 70%);animation:pulse 8s ease infinite;pointer-events:none}
 .bg2{position:fixed;bottom:-15%;left:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(45,106,79,.06) 0%,transparent 70%);animation:pulse 10s ease 2s infinite;pointer-events:none}
@@ -94,7 +96,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.2)}
 .fc h2{font-family:'Playfair Display',Georgia,serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.25}
 .fa{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:6px;font-weight:500}
 .fe{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:16px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.fm{display:flex;gap:16px;font-size:13px}
+.fm{display:flex;gap:16px;font-size:13px;align-items:center}
 .fm .r{color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px}
 .fm .l{color:#C45D3E;display:flex;align-items:center;gap:5px;font-weight:600}
 .fl{display:flex;gap:8px;margin-bottom:20px}
@@ -109,9 +111,16 @@ footer p{font-size:13px;color:rgba(255,255,255,.2)}
 .cd h3{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:700;color:#1A1A1A;margin-bottom:6px;line-height:1.3}
 .cd .ca{font-size:13px;color:#6B5E50;margin-bottom:14px;font-weight:500}
 .cd .ce{font-size:14px;color:#6B5E50;margin-bottom:16px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.cm{display:flex;gap:16px;font-size:13px;font-weight:500}
+.cm{display:flex;gap:16px;font-size:13px;font-weight:500;align-items:center;flex-wrap:wrap}
 .cm .r{color:#6B5E50;display:flex;align-items:center;gap:5px}
 .cm .l{color:#2D6A4F;display:flex;align-items:center;gap:5px;font-weight:600}
+
+/* Likes + comments on cards */
+.social{display:flex;gap:14px;align-items:center;margin-left:auto;font-size:12px;color:#6B5E50}
+.social span{display:flex;align-items:center;gap:4px;cursor:pointer;transition:color .2s}
+.social .liked{color:#C45D3E}
+.lk-btn{background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;font-size:12px;color:#6B5E50;font-family:'DM Sans',sans-serif;padding:0;transition:all .2s}
+.lk-btn:hover,.lk-btn.liked{color:#C45D3E}
 
 /* READING */
 .rv{min-height:100vh;background:#FAF7F2;display:none}
@@ -126,9 +135,9 @@ footer p{font-size:13px;color:rgba(255,255,255,.2)}
 .tgi{font-size:11px;font-weight:600;color:#6B5E50;background:#EDE7DF;padding:4px 10px;border-radius:20px}
 .rv h1{font-family:'Playfair Display',Georgia,serif;font-size:32px;font-weight:800;color:#1A1A1A;margin-bottom:10px;line-height:1.2}
 .rau{font-size:15px;color:#6B5E50;margin-bottom:8px;font-weight:500}
-.rme{display:flex;gap:16px;margin-bottom:8px;font-size:13px;color:#6B5E50}
+.rme{display:flex;gap:16px;margin-bottom:8px;font-size:13px;color:#6B5E50;align-items:center}
 .rme .l{color:#2D6A4F}
-.rb{font-family:'Source Serif 4',Georgia,serif;font-size:17.5px;line-height:1.8;color:#1A1A1A;padding-bottom:80px;padding-top:12px}
+.rb{font-family:'Source Serif 4',Georgia,serif;font-size:17.5px;line-height:1.8;color:#1A1A1A;padding-bottom:20px;padding-top:12px}
 .rb p{margin-bottom:20px}
 .ap{background:#1A1A1A;border-radius:16px;padding:16px 20px;display:none;align-items:center;gap:14px;margin:20px 0}
 .py{width:44px;height:44px;border-radius:50%;background:#C45D3E;border:none;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:transform .15s ease}
@@ -137,6 +146,32 @@ footer p{font-size:13px;color:rgba(255,255,255,.2)}
 .ptr{height:4px;border-radius:2px;background:rgba(255,255,255,.15);margin-bottom:6px;overflow:hidden}
 .pf{height:100%;background:#C45D3E;border-radius:2px;transition:width .3s linear;width:0%}
 .pt{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.5)}
+
+/* Social bar in reading view */
+.social-bar{display:flex;align-items:center;gap:20px;padding:16px 0;border-top:1px solid #E8E0D6;border-bottom:1px solid #E8E0D6;margin:8px 0 20px}
+.social-bar button{background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-size:14px;color:#6B5E50;font-family:'DM Sans',sans-serif;font-weight:500;padding:6px 0;transition:all .2s}
+.social-bar button:hover{color:#C45D3E}
+.social-bar button.liked{color:#C45D3E}
+.social-bar .count{font-size:13px;color:#6B5E50}
+
+/* Comments section */
+.comments-section{padding:24px 0 80px}
+.comments-header{font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;color:#1A1A1A;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.comments-header span{font-size:13px;font-weight:500;color:#6B5E50}
+.comment{display:flex;gap:12px;margin-bottom:20px}
+.comment-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
+.comment-body{flex:1}
+.comment-name{font-size:13px;font-weight:700;color:#1A1A1A}
+.comment-time{font-size:11px;color:#6B5E50;margin-left:8px;font-weight:400}
+.comment-text{font-size:14px;color:#1A1A1A;line-height:1.5;margin-top:4px}
+.comment-actions{display:flex;gap:16px;margin-top:6px;font-size:12px;color:#6B5E50}
+.comment-actions button{background:none;border:none;cursor:pointer;font-size:12px;color:#6B5E50;font-family:'DM Sans',sans-serif;padding:0;transition:color .2s}
+.comment-actions button:hover{color:#C45D3E}
+.add-comment{display:flex;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid #E8E0D6}
+.add-comment input{flex:1;padding:10px 14px;border:1px solid #E8E0D6;border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;background:#fff;color:#1A1A1A}
+.add-comment input:focus{border-color:#C45D3E}
+.add-comment input::placeholder{color:#B5A99A}
+.add-comment button{padding:10px 18px;border-radius:10px;background:#C45D3E;border:none;color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
 
 /* WRITE */
 .wv{min-height:100vh;background:#FAF7F2;display:none}
@@ -180,15 +215,10 @@ nav,.hs,.ws,.wls{padding-left:20px;padding-right:20px}
 </head>
 <body>
 
+<!-- LANDING -->
 <div class="landing" id="pg-land">
 <div class="bg1"></div><div class="bg2"></div>
-<nav class="fi d1">
-<div class="logo" onclick="go('land')">ten<span class="ld">.</span></div>
-<div class="nb">
-<button class="ng" onclick="goWL('reader')">I want to read</button>
-<button class="na" onclick="goWL('writer')">I want to write</button>
-</div>
-</nav>
+<nav class="fi d1"><div class="logo" onclick="go('land')">ten<span class="ld">.</span></div><div class="nb"><button class="ng" onclick="goWL('reader')">I want to read</button><button class="na" onclick="goWL('writer')">I want to write</button></div></nav>
 <section class="hero">
 <div>
 <div class="hb fi d2"><span class="hbd"></span><span class="hbt">Launching soon — 247 people on the waitlist</span></div>
@@ -204,7 +234,7 @@ nav,.hs,.ws,.wls{padding-left:20px;padding-right:20px}
 <div class="mc">
 <div class="mi fi d5"><span class="mt cs">Story</span><h4>The Night I Left Lagos</h4><div class="au">by Chidera Okafor</div><div class="me"><span>📖 9m</span><span style="color:#C45D3E">🎧 7m</span></div></div>
 <div class="mi fi d6"><span class="mt cl">Learn</span><h4>Why You Procrastinate</h4><div class="au">by Dr. Amara Osei</div><div class="me"><span>📖 7m</span><span style="color:#2D6A4F">🎧 6m</span></div></div>
-<div class="mi fi d7"><span class="mt ci">Idea</span><h4>Built a Business With $200</h4><div class="au">by Kemi Adeyemi</div><div class="me"><span>📖 8m</span><span style="color:#6B4FA0">🎧 7m</span></div></div>
+<div class="mi fi d7"><span class="mt ci">Idea</span><h4>I Quit My Tech Job at 30</h4><div class="au">by Sarah Chen</div><div class="me"><span>📖 8m</span><span style="color:#6B4FA0">🎧 7m</span></div></div>
 <div class="fi d7" style="text-align:center;padding:14px 0;font-size:13px;color:rgba(255,255,255,.25);font-style:italic">...and a new pick every day</div>
 </div>
 </section>
@@ -216,57 +246,78 @@ nav,.hs,.ws,.wls{padding-left:20px;padding-right:20px}
 <div class="hc"><span class="hn" style="color:#6B4FA0">03</span><h4>Finish in ten minutes</h4><p>No 3-hour podcasts. No 400-page books. Just one sharp idea, one moving story — and you're done.</p></div>
 </div>
 </section>
-<section class="ws">
-<div class="wc">
+<section class="ws"><div class="wc">
 <span class="wl">For Writers & Creators</span>
 <h3>Your words, plus audio —<br><span style="font-style:italic;color:#C45D3E">automatically.</span></h3>
 <p>Write a short story, essay, or idea. We auto-generate audio so your piece reaches readers and listeners. No studio needed.</p>
 <div class="wt"><span>Short fiction</span><span>Life lessons</span><span>Startup stories</span><span>Cultural essays</span><span>Book summaries</span><span>Career insights</span></div>
-</div>
-</section>
-<section class="wls" id="waitlist">
-<div class="wli"><h3 id="wlt">Join the waitlist</h3><div id="wlf"></div></div>
-</section>
+</div></section>
+<section class="wls" id="waitlist"><div class="wli"><h3 id="wlt">Join the waitlist</h3><div id="wlf"></div></div></section>
 <footer><p>ten<span class="ld">.</span> — Stories and ideas for busy people.</p></footer>
 </div>
 
+<!-- APP -->
 <div class="app" id="pg-app"><div class="ai">
 <div class="ah"><div class="al" onclick="go('land')">ten<span class="ld">.</span></div><button class="wb" onclick="go('write')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Write</button></div>
 <p class="at">Stories and ideas for busy people.</p>
 <div id="af"></div><div class="fl" id="afl"></div><div class="cc" id="acc"></div>
 </div></div>
 
+<!-- READING -->
 <div class="rv" id="pg-read"><div class="ri">
 <div class="rh"><button class="bb" onclick="go('app')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
 <div class="mg"><button class="mb mba" id="mr" onclick="sm('read')">📖 Read</button><button class="mb mbi" id="ml" onclick="sm('listen')">🎧 Listen</button></div></div>
 <div id="rc"></div>
 </div></div>
 
+<!-- WRITE -->
 <div class="wv" id="pg-write"><div class="wi" id="wrc"></div></div>
 
 <script>
 var D=[
-{id:1,title:"The Night I Left Lagos",author:"Chidera Okafor",cat:"Story",rm:9,lm:7,tags:["Immigration","Identity"],ft:true,
+{id:1,title:"The Night I Left Lagos",author:"Chidera Okafor",cat:"Story",rm:9,lm:7,tags:["Immigration","Identity"],ft:true,likes:127,comments:[
+{name:"Aisha M.",avatar:"#C45D3E",time:"2h ago",text:"This hit so close to home. I left Accra two years ago and the part about eating alone... that's exactly it."},
+{name:"James O.",avatar:"#2D6A4F",time:"5h ago",text:"Beautiful writing. The line about home being a place you carry stayed with me all day."},
+{name:"Rachel K.",avatar:"#6B4FA0",time:"1d ago",text:"Shared this with my mom. She cried. Thank you for putting this into words."}],
 ex:"The airport smelled like diesel and goodbye. My mother held my hand like I was five again.",
 body:"The airport smelled like diesel and goodbye. My mother held my hand like I was five again, and for a moment I wished I was — too young to leave, too young to know what leaving costs.\n\nI had rehearsed this moment for months. I told myself I would be strong. But standing at the departure gate at Murtala Muhammed International, none of my rehearsals held up.\n\n\"Don't forget to eat,\" my mother said. As if hunger was the thing I should fear. As if the ocean I was about to cross, the loneliness that awaited me in East London — as if none of that mattered compared to whether I had rice in my belly.\n\nShe was right, of course. Mothers usually are. In the first weeks, I did forget to eat. Not because there was no food, but because eating alone felt like an admission that this was my life now.\n\nLondon was gray in a way that felt personal. I got a job at a warehouse in Barking. The manager called me \"Charles\" because he couldn't pronounce Chidera. I let him.\n\nBut at night, I would call home. The connection was always bad. My mother's voice would break into pixels of sound, half-sentences I had to complete with memory.\n\nSix months in, I learned that missing home is not one feeling. It is a rotating cast of small griefs. The smell of jollof rice. The sound of generators humming. The way my sister laughed — loud and unapologetic.\n\nI started writing. Not because I wanted to be a writer, but because I needed somewhere to put it all.\n\nA year passed. Then two. I learned that home is not a place you leave — it's a place you carry.\n\nAnd sometimes, late at night, I write about a boy in an airport, holding his mother's hand, smelling diesel and goodbye."},
-{id:2,title:"Why You Procrastinate (It's Not Laziness)",author:"Dr. Amara Osei",cat:"Learn",rm:7,lm:6,tags:["Psychology","Productivity"],ft:false,
+{id:2,title:"Why You Procrastinate (It's Not Laziness)",author:"Dr. Amara Osei",cat:"Learn",rm:7,lm:6,tags:["Psychology","Productivity"],ft:false,likes:89,comments:[
+{name:"Mike T.",avatar:"#C45D3E",time:"3h ago",text:"The affect labeling tip actually works. I tried it today and caught myself before a 2-hour scroll session."},
+{name:"Priya S.",avatar:"#6B4FA0",time:"8h ago",text:"Finally someone explained this without making me feel broken. Sharing with my entire team."}],
 ex:"Procrastination isn't a time management problem — it's an emotion management problem.",
 body:"Procrastination isn't a time management problem — it's an emotion management problem. Here's what neuroscience actually says.\n\nThe answer lives in your amygdala. When you face a task that triggers negative emotions — anxiety, boredom, self-doubt — your brain treats that feeling like a physical threat. So you flee.\n\nYou check your phone. You reorganize your desk. You do anything to escape — not the task, but the feeling the task creates.\n\nHere's what actually helps:\n\nFirst, name the emotion. \"Affect labeling\" — putting a word to a feeling — decreases amygdala activity.\n\nSecond, lower the bar. Instead of \"write the report,\" try \"open the document and write one sentence.\"\n\nThird, forgive yourself for past procrastination. Self-forgiveness actually reduces future procrastination.\n\nFourth, connect the task to your identity. \"I'm a person who shows up\" is more powerful than \"I need to finish this by Friday.\"\n\nThe things we put off most are often the things that matter most. So the next time you catch yourself avoiding something important, get curious. And take one small step toward it."},
-{id:3,title:"How I Built a Business With $200",author:"Kemi Adeyemi",cat:"Idea",rm:8,lm:7,tags:["Startup","Hustle"],ft:false,
+{id:3,title:"I Quit My Tech Job at 30. Here's What Happened.",author:"Sarah Chen",cat:"Idea",rm:8,lm:7,tags:["Career","Risk"],ft:false,likes:214,comments:[
+{name:"David R.",avatar:"#2D6A4F",time:"1h ago",text:"I'm 29 and have been thinking about this for months. This gave me the push I needed."},
+{name:"Tolu A.",avatar:"#C45D3E",time:"4h ago",text:"The part about your identity being tied to your job title is SO real. I felt that."},
+{name:"Emma W.",avatar:"#6B4FA0",time:"1d ago",text:"Quit my corporate job last year. Best and scariest decision I ever made. This captures it perfectly."}],
+ex:"Everyone told me I was crazy. Maybe I was. But staying felt crazier.",
+body:"Everyone told me I was crazy. Maybe I was. But staying felt crazier.\n\nI was a senior product manager at a company you've heard of. The salary was great. The benefits were better. And every single morning, I had to convince myself to get out of bed.\n\nIt wasn't burnout — I'd burned out before and recovered. This was something quieter. A slow realization that I was building someone else's dream with the best years of my life.\n\nThe moment I knew I had to leave was a Tuesday. My manager praised me in a meeting for shipping a feature I didn't care about, to users I'd never meet, for metrics that meant nothing to me. Everyone clapped. I smiled. And something inside me cracked.\n\nI didn't quit dramatically. I saved for eight months. I told my parents, who didn't understand but loved me enough to worry quietly. I wrote a resignation letter that took me three weeks to send.\n\nThe first month of freedom was terrifying. My identity had been my job title for so long that without it, I didn't know how to introduce myself at parties. \"What do you do?\" became the hardest question in the English language.\n\nI started freelancing. Then consulting. Then I built a small product that nobody used. Then I built another one that twelve people used. Then I built something that strangers started paying for.\n\nHere's what I learned: the opposite of a stable job isn't chaos. It's ownership. Every hour I work now is mine. Every risk is mine. Every win is mine.\n\nI make less money than I did at the company. I work more hours. And I have never, not once, had to convince myself to get out of bed.\n\nIf you're reading this in your cubicle or on your commute, wondering if there's something else — there is. But it won't come to you. You have to go get it."},
+{id:4,title:"How I Built a Business With $200",author:"Kemi Adeyemi",cat:"Idea",rm:8,lm:7,tags:["Startup","Hustle"],ft:false,likes:156,comments:[
+{name:"Carlos M.",avatar:"#2D6A4F",time:"6h ago",text:"This is the most real startup advice I've read. No VC talk, just action. Respect."},
+{name:"Fatima H.",avatar:"#C45D3E",time:"1d ago",text:"\"The money follows the motion.\" I'm writing that on my wall."}],
 ex:"Everyone talks about funding rounds. Nobody talks about starting with the money in your pocket.",
 body:"In 2019, I was 24, living in Ikeja, Lagos. I had an idea — a subscription snack box featuring local Nigerian treats. I called it \"Chop Box.\"\n\nI had ₦80,000 (about $200). Here's what I did:\n\n₦25,000 went to buying snacks in bulk from Mile 12 market. Chin chin, plantain chips, kulikuli.\n\n₦15,000 went to packaging. Simple kraft paper boxes with a stamp.\n\n₦10,000 went to five free boxes for five friends. \"Post it on your story, honestly.\"\n\n₦30,000 I kept as reserve. First rule: always keep something.\n\nBy month one, 12 paying customers. By month six, I quit my job. By month twelve, a team of three.\n\nYou don't need to start big. You need to start real. A real product, in real hands, getting real feedback.\n\nYour first customers are relationships, not transactions. I knew every one of my first 50 by name.\n\nConstraints are creative fuel. I couldn't afford branding, so I made it raw and handmade. Customers loved it.\n\nToday, Chop Box serves over 2,000 subscribers. And it started with ₦80,000 and five free boxes.\n\nIf you have an idea and not much in your account — start. The money follows the motion."},
-{id:4,title:"The Science of Habits",author:"Dr. Kwame Mensah",cat:"Learn",rm:10,lm:8,tags:["Neuroscience","Self-improvement"],ft:false,
+{id:5,title:"What My Grandfather's Hands Taught Me",author:"Marcus Williams",cat:"Story",rm:6,lm:5,tags:["Family","Wisdom"],ft:false,likes:93,comments:[
+{name:"Linda J.",avatar:"#6B4FA0",time:"3h ago",text:"I'm not crying, you're crying. This is exactly how I feel about my grandmother."},
+{name:"Kwesi B.",avatar:"#2D6A4F",time:"12h ago",text:"The details in this are incredible. I could see those hands. Beautiful piece."}],
+ex:"His hands told the story his mouth never would. Scarred, calloused, and impossibly gentle.",
+body:"His hands told the story his mouth never would. Scarred, calloused, and impossibly gentle.\n\nMy grandfather was a carpenter in Detroit for 42 years. He built houses for other people and raised six children in a three-bedroom home he built himself. He never talked about what that cost him.\n\nBut his hands did.\n\nThe scar on his left thumb from a table saw in 1973. The way his ring finger bent slightly inward from a break that never healed right. The callouses so thick you could strike a match on them — which he did, once, to make me laugh when I was seven.\n\nI spent every summer with him. While other kids went to camp, I went to his workshop. He never said \"I'm going to teach you something.\" He just handed me sandpaper and pointed at a chair leg.\n\nHours of sanding. My arms ached. The wood dust made me sneeze. I wanted to quit every single day. But I didn't, because he was right there beside me, sanding his own piece, not saying a word.\n\nThat's the first thing his hands taught me: showing up is the lesson. Not the speech before. Not the praise after. Just the showing up.\n\nWhen I graduated college — the first in my family — he shook my hand. Didn't say much. But he held on a beat longer than usual, and his grip said everything a man of his generation couldn't.\n\nHe passed three years ago. I have his favorite chisel on my desk. I don't do woodwork. But every morning, I see it, and I remember: the work is the thing. Do it with your hands. Do it quietly. Do it well.\n\nI'm raising my own son now. He's four. Last week, I handed him a crayon and pointed at a piece of paper.\n\nWe sat there together, not saying a word."},
+{id:6,title:"The Science of Habits",author:"Dr. Kwame Mensah",cat:"Learn",rm:10,lm:8,tags:["Neuroscience","Self-improvement"],ft:false,likes:71,comments:[
+{name:"Anna L.",avatar:"#C45D3E",time:"7h ago",text:"Habit stacking changed my life. Coffee + journaling has been my routine for 6 months now."}],
 ex:"Every habit follows the same loop: cue, routine, reward. Understanding this is the key.",
 body:"Every habit follows the same neurological loop: cue, routine, reward.\n\nWhen a behavior becomes habitual, brain activity shifts from conscious decision-making to automatic processing. That's why habits feel effortless.\n\nThe crucial insight: you can't eliminate a habit. You can only change the routine while keeping the cue and reward.\n\n\"Habit stacking\" is powerful: attach a new habit to an existing one. \"After I pour my coffee, I will write for five minutes.\"\n\nEnvironment design matters more than willpower. Want to read more? Put a book on your pillow.\n\nIt takes 18 to 254 days to form a habit, averaging 66. But missing one day doesn't reset the process.\n\nThe real power of habits is the identity they create. When you show up to write every morning, you're becoming a writer.\n\nStart small. One push-up. One paragraph. One minute. Cast a vote for the person you want to become."},
-{id:5,title:"A Letter to My Younger Self",author:"Ngozi Eze",cat:"Story",rm:6,lm:5,tags:["Personal","Reflection"],ft:false,
-ex:"Dear 22-year-old me: You're going to make decisions that don't make sense for another decade.",
-body:"Dear 22-year-old me,\n\nYou're sitting in that one-room apartment in Enugu, eating indomie for the third time this week.\n\nYou're going to make decisions that won't make sense for a long time. You'll turn down a stable job to pursue something uncertain. Your father will be confused.\n\nTrust the confusion. It's not a sign you're lost. It's a sign you're looking for something real.\n\nThe people who seem like they have it figured out don't. They've just made a choice and committed.\n\nYou're going to fall in love with someone who isn't right for you. Let go sooner.\n\nLearn to cook beyond indomie. Feeding yourself well is the first act of self-respect.\n\nSave money. A little cushion turns desperation into patience.\n\nCall your mother more. Not when you need something. Just to talk.\n\nYou are not behind. Everyone is figuring it out.\n\nYou're going to build a life that surprises you — not because it's perfect, but because it's yours.\n\nTrust yourself.\n\nLove,\nYou (ten years later)"},
-{id:6,title:"Negotiation Isn't About Winning",author:"Tobi Adesanya",cat:"Learn",rm:8,lm:7,tags:["Business","Communication"],ft:false,
+{id:7,title:"A Train Ride in Mumbai Changed Everything",author:"Priya Sharma",cat:"Story",rm:7,lm:6,tags:["Travel","Perspective"],ft:false,likes:108,comments:[
+{name:"Chidera O.",avatar:"#C45D3E",time:"5h ago",text:"This is exactly why I love this app. Stories I'd never find anywhere else."},
+{name:"Jake M.",avatar:"#2D6A4F",time:"1d ago",text:"I've been to Mumbai and this brought it all back. The sounds, the chaos, the humanity."}],
+ex:"In a train car packed with a thousand strangers, a six-year-old girl taught me what wealth actually means.",
+body:"In a train car packed with a thousand strangers, a six-year-old girl taught me what wealth actually means.\n\nI was 26, on a work trip to Mumbai, riding the local train during rush hour because my colleague said I had to experience it at least once. \"You'll hate it,\" she said. \"And you'll never forget it.\"\n\nShe was right on both counts.\n\nThe crowd pressed in from every direction. I couldn't move my arms. I could barely breathe. The heat was suffocating, the noise deafening. I was terrified and furious and counting the stops until I could escape.\n\nThen I looked down and saw her. A girl, maybe six years old, squeezed between commuters four times her size. She was holding a small steel lunchbox with both hands, protecting it like treasure.\n\nShe looked up at me and smiled. Not a shy smile. Not a polite smile. A full, radiant, completely unbothered smile — as if being crushed in a train car was just another adventure in a life full of them.\n\nHer mother was beside her, one arm wrapped around the girl, the other gripping the overhead rail. She saw me looking and shrugged, as if to say: this is just how we get home.\n\nI got off at my stop and walked to my hotel in a kind of daze. I had a room with air conditioning and a king-size bed and a minibar I'd expense to my company. And I couldn't stop thinking about that lunchbox.\n\nWhat was in it? Rice? Dal? Something her mother woke up early to make before her own commute?\n\nI realized I'd spent my entire twenties chasing the wrong definition of wealth. I thought wealth was the hotel room. But wealth was the lunchbox. Wealth was someone caring enough to fill it. Wealth was a child smiling in chaos because she knew she was held.\n\nI went home and called my mother. I hadn't called her in three weeks. She picked up on the first ring."},
+{id:8,title:"Negotiation Isn't About Winning",author:"Tobi Adesanya",cat:"Learn",rm:8,lm:7,tags:["Business","Communication"],ft:false,likes:64,comments:[
+{name:"Sophie L.",avatar:"#6B4FA0",time:"9h ago",text:"Used the mirroring technique in a salary negotiation today. It actually works!"}],
 ex:"The best negotiators don't try to win. They try to understand.",
 body:"The best negotiators don't try to win. They try to understand.\n\nChris Voss, former FBI hostage negotiator, teaches: negotiation is about making the other person feel heard.\n\nTactical empathy: acknowledge feelings without agreeing. \"It sounds like you're frustrated with the timeline.\"\n\nMirroring: repeat the last three words. \"Can't do that price?\" Then wait.\n\nLabeling: name their emotion. \"It seems like something about this deal is making you uncomfortable.\"\n\nCalibrated questions: ask \"How\" or \"What\" instead of demands. \"How am I supposed to do that?\"\n\nGet to \"no\" early. When someone says no, they feel safe. From safety, they explore options.\n\nThe biggest mistake: talking too much. The person who talks most learns least.\n\nNegotiation isn't a battle. It's a conversation."}
 ];
 
-var cf='All',ci=null,ip=false,ap=0,ai=null,ws=1,wr=null,wb=null,wd=false;
+var cf='All',ci=null,ip=false,ap=0,ai=null,ws=1,wr=null,wb=null,wd=false,likedItems={};
 
 function go(p){
   document.querySelectorAll('.landing,.app,.rv,.wv').forEach(function(e){e.style.display='none'});
@@ -278,24 +329,46 @@ function go(p){
 function gr(id){ci=D.find(function(c){return c.id===id});sa();document.querySelectorAll('.landing,.app,.rv,.wv').forEach(function(e){e.style.display='none'});document.getElementById('pg-read').style.display='block';rr();window.scrollTo(0,0);}
 function goWL(r){wr=r;ws=2;rwl();document.getElementById('waitlist').scrollIntoView({behavior:'smooth'});}
 
+function toggleLike(id,ev){
+  if(ev)ev.stopPropagation();
+  var item=D.find(function(c){return c.id===id});
+  if(likedItems[id]){likedItems[id]=false;item.likes--;}
+  else{likedItems[id]=true;item.likes++;}
+  ra();if(ci&&ci.id===id)rr();
+}
+
 function ra(){
   var f=D.find(function(c){return c.ft});
-  document.getElementById('af').innerHTML='<div class="fc" onclick="gr('+f.id+')"><div class="fg"></div><div class="fb">⭐ Today\'s Pick</div><h2>'+f.title+'</h2><div class="fa">by '+f.author+'</div><div class="fe">'+f.ex+'</div><div class="fm"><span class="r">📖 '+f.rm+' min</span><span class="l">🎧 '+f.lm+' min</span></div></div>';
+  document.getElementById('af').innerHTML='<div class="fc" onclick="gr('+f.id+')"><div class="fg"></div><div class="fb">⭐ Today\'s Pick</div><h2>'+f.title+'</h2><div class="fa">by '+f.author+'</div><div class="fe">'+f.ex+'</div><div class="fm"><span class="r">📖 '+f.rm+' min</span><span class="l">🎧 '+f.lm+' min</span><span style="margin-left:auto;display:flex;gap:12px;font-size:12px"><span style="color:rgba(255,255,255,.5);display:flex;align-items:center;gap:4px">❤️ '+f.likes+'</span><span style="color:rgba(255,255,255,.5);display:flex;align-items:center;gap:4px">💬 '+f.comments.length+'</span></span></div></div>';
   var fl=['All','Story','Learn','Idea'];
   document.getElementById('afl').innerHTML=fl.map(function(x){return'<button class="fb2'+(cf===x?' fba':'')+'" onclick="cf=\''+x+'\';ra()">'+x+'</button>'}).join('');
   var it=D.filter(function(c){return!c.ft&&(cf==='All'||c.cat===cf)});
   document.getElementById('acc').innerHTML=it.map(function(c){
     var cc=c.cat==='Story'?'xs':c.cat==='Learn'?'xl':'xi';
-    return'<div class="cd" onclick="gr('+c.id+')"><div class="ct"><span class="cx '+cc+'">'+c.cat+'</span></div><h3>'+c.title+'</h3><div class="ca">by '+c.author+'</div><div class="ce">'+c.ex+'</div><div class="cm"><span class="r">📖 '+c.rm+' min read</span><span class="l">🎧 '+c.lm+' min listen</span></div></div>'
+    var lk=likedItems[c.id];
+    return'<div class="cd" onclick="gr('+c.id+')"><div class="ct"><span class="cx '+cc+'">'+c.cat+'</span></div><h3>'+c.title+'</h3><div class="ca">by '+c.author+'</div><div class="ce">'+c.ex+'</div><div class="cm"><span class="r">📖 '+c.rm+' min</span><span class="l">🎧 '+c.lm+' min</span><span class="social"><button class="lk-btn'+(lk?' liked':'')+'" onclick="toggleLike('+c.id+',event)">'+(lk?'❤️':'🤍')+' '+c.likes+'</button><span>💬 '+c.comments.length+'</span></span></div></div>'
   }).join('');
 }
 
 function rr(){
-  if(!ci)return;sa();
+  if(!ci)return;sa();ap=0;
   var c=ci,cc=c.cat==='Story'?'xs':c.cat==='Learn'?'xl':'xi';
   var bh=c.body.split('\n\n').map(function(p){return'<p>'+p+'</p>'}).join('');
-  document.getElementById('rc').innerHTML='<div class="tg"><span class="cx '+cc+'">'+c.cat+'</span>'+c.tags.map(function(t){return'<span class="tgi">'+t+'</span>'}).join('')+'</div><h1>'+c.title+'</h1><div class="rau">by '+c.author+'</div><div class="rme"><span>📖 '+c.rm+' min</span><span class="l">🎧 '+c.lm+' min</span></div><div class="ap" id="apl"><button class="py" onclick="ta()"><svg id="pi" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></button><div class="pk"><div class="ptr"><div class="pf" id="pfl"></div></div><div class="pt"><span id="tc">0:00</span><span>'+c.lm+':00</span></div></div></div><div class="rb">'+bh+'</div>';
+  var lk=likedItems[c.id];
+  var commentsHtml=c.comments.map(function(cm){
+    return'<div class="comment"><div class="comment-avatar" style="background:'+cm.avatar+'">'+cm.name.charAt(0)+'</div><div class="comment-body"><span class="comment-name">'+cm.name+'</span><span class="comment-time">'+cm.time+'</span><div class="comment-text">'+cm.text+'</div><div class="comment-actions"><button>❤️ Like</button><button>Reply</button></div></div></div>';
+  }).join('');
+  document.getElementById('rc').innerHTML='<div class="tg"><span class="cx '+cc+'">'+c.cat+'</span>'+c.tags.map(function(t){return'<span class="tgi">'+t+'</span>'}).join('')+'</div><h1>'+c.title+'</h1><div class="rau">by '+c.author+'</div><div class="rme"><span>📖 '+c.rm+' min</span><span class="l">🎧 '+c.lm+' min</span></div><div class="social-bar"><button onclick="toggleLike('+c.id+')" class="'+(lk?'liked':'')+'">'+(lk?'❤️':'🤍')+' <span class="count">'+c.likes+' likes</span></button><button onclick="document.getElementById(\'cs\').scrollIntoView({behavior:\'smooth\'})">💬 <span class="count">'+c.comments.length+' comments</span></button><button>🔗 Share</button></div><div class="ap" id="apl"><button class="py" onclick="ta()"><svg id="pi" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></button><div class="pk"><div class="ptr"><div class="pf" id="pfl"></div></div><div class="pt"><span id="tc">0:00</span><span>'+c.lm+':00</span></div></div></div><div class="rb">'+bh+'</div><div class="comments-section" id="cs"><div class="comments-header">Comments <span>('+c.comments.length+')</span></div>'+commentsHtml+'<div class="add-comment"><input id="cmi" placeholder="Add a comment..." onkeydown="if(event.key===\'Enter\')addComment()"><button onclick="addComment()">Post</button></div></div>';
   sm('read');
+}
+
+function addComment(){
+  var input=document.getElementById('cmi');
+  var text=input.value.trim();
+  if(!text||!ci)return;
+  ci.comments.push({name:"You",avatar:"#1A1A1A",time:"Just now",text:text});
+  rr();
+  setTimeout(function(){document.getElementById('cs').scrollIntoView({behavior:'smooth'});},100);
 }
 
 function sm(m){
@@ -303,22 +376,14 @@ function sm(m){
   if(m==='read'){r.className='mb mba';l.className='mb mbi';if(p)p.style.display='none';sa();}
   else{r.className='mb mbi';l.className='mb mba';if(p)p.style.display='flex';sp();}
 }
-
 function ft(s){var m=Math.floor(s/60),sc=Math.floor(s%60);return m+':'+(sc<10?'0':'')+sc;}
 function ta(){if(ip)sa();else sp();}
-function sp(){
-  ip=true;ui();if(ai)clearInterval(ai);
-  var tot=ci.lm*60;
-  ai=setInterval(function(){ap++;if(ap>=tot){sa();ap=tot;}document.getElementById('pfl').style.width=(ap/tot*100)+'%';document.getElementById('tc').textContent=ft(ap);},1000);
-}
+function sp(){ip=true;ui();if(ai)clearInterval(ai);var tot=ci.lm*60;ai=setInterval(function(){ap++;if(ap>=tot){sa();ap=tot;}document.getElementById('pfl').style.width=(ap/tot*100)+'%';document.getElementById('tc').textContent=ft(ap);},1000);}
 function sa(){ip=false;ui();if(ai){clearInterval(ai);ai=null;}}
 function ui(){var i=document.getElementById('pi');if(!i)return;i.innerHTML=ip?'<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>':'<polygon points="5,3 19,12 5,21"/>';}
 
 var wcat='Story';
-function rw(){
-  document.getElementById('wrc').innerHTML='<div class="wh"><button class="bb" onclick="go(\'app\')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button><h2>Write a Piece</h2></div><p class="wd">Share a story, lesson, or idea. Keep it under 15 minutes — we\'ll auto-generate the audio.</p><label class="lb">Category</label><div class="cb" id="wcb"></div><input class="ti" id="wti" placeholder="Title" oninput="up()"><textarea class="ta" id="wta" placeholder="Start writing your story, lesson, or idea..." oninput="up()"></textarea><div class="wn" id="wwn"></div><div class="an"><span style="color:#2D6A4F">🎧</span><p>Audio will be auto-generated when you publish.</p></div><button class="pu pud" id="wpb" onclick="sw()">Publish</button>';
-  rc2('Story');
-}
+function rw(){document.getElementById('wrc').innerHTML='<div class="wh"><button class="bb" onclick="go(\'app\')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button><h2>Write a Piece</h2></div><p class="wd">Share a story, lesson, or idea. Keep it under 15 minutes — we\'ll auto-generate the audio.</p><label class="lb">Category</label><div class="cb" id="wcb"></div><input class="ti" id="wti" placeholder="Title" oninput="up()"><textarea class="ta" id="wta" placeholder="Start writing your story, lesson, or idea..." oninput="up()"></textarea><div class="wn" id="wwn"></div><div class="an"><span style="color:#2D6A4F">🎧</span><p>Audio will be auto-generated when you publish.</p></div><button class="pu pud" id="wpb" onclick="sw()">Publish</button>';rc2('Story');}
 function rc2(s){wcat=s;document.getElementById('wcb').innerHTML=['Story','Learn','Idea'].map(function(c){var a=c===s,co=c==='Story'?'#C45D3E':c==='Learn'?'#2D6A4F':'#6B4FA0',bg=a?(c==='Story'?'#FDF2E9':c==='Learn'?'#E9F5F0':'#F0ECF9'):'transparent';return'<button class="csb" style="border:2px solid '+(a?co:'#E8E0D6')+';background:'+bg+';color:'+(a?co:'#6B5E50')+'" onclick="rc2(\''+c+'\')">'+c+'</button>'}).join('');}
 function up(){var t=document.getElementById('wti').value,b=document.getElementById('wta').value,btn=document.getElementById('wpb'),wn=document.getElementById('wwn');if(b.trim()){var w=b.trim().split(/\s+/).length;wn.textContent='~'+Math.max(1,Math.round(w/200))+' min read · ~'+Math.max(1,Math.round(w/240))+' min listen';}else{wn.textContent='';}btn.className=t.trim()&&b.trim()?'pu pua':'pu pud';}
 function sw(){var t=document.getElementById('wti').value,b=document.getElementById('wta').value;if(!t.trim()||!b.trim())return;document.getElementById('wrc').innerHTML='<div class="sv"><div><div style="width:72px;height:72px;border-radius:50%;background:#F4E8E3;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px">✓</div><h2>Story Submitted</h2><p>Audio will be auto-generated.<br>Your piece will be reviewed soon.</p><button class="pb" onclick="go(\'app\')">Back to Home</button></div></div>';}

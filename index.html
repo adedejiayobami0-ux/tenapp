@@ -333,7 +333,7 @@ function rwl(){
   else if(ws===2){el.innerHTML='<div class="pd">'+dots+'</div><p class="sq">How do you currently spend short breaks?</p><div class="so"><button class="sb" onclick="wb=\'social\';ws=3;rwl()"><span class="se">📱</span> Scrolling social media</button><button class="sb" onclick="wb=\'news\';ws=3;rwl()"><span class="se">📰</span> Reading news or articles</button><button class="sb" onclick="wb=\'podcasts\';ws=3;rwl()"><span class="se">🎙️</span> Listening to podcasts</button><button class="sb" onclick="wb=\'nothing\';ws=3;rwl()"><span class="se">😶</span> Honestly, just zoning out</button></div>'+bk;}
   else if(ws===3){el.innerHTML='<div class="pd">'+dots+'</div><p class="sq">Last step — where should we send your invite?</p><div class="er"><input class="ei" type="email" id="we" placeholder="your@email.com" onkeydown="if(event.key===\'Enter\')swl()"><button class="jb" onclick="swl()">Join</button></div><p class="en">No spam. Just a heads up when we launch.</p>'+bk;}
 }
-function swl(){var e=document.getElementById('we').value;if(e&&e.includes('@')){wd=true;rwl();}}
+function swl(){var e=document.getElementById('we').value;if(e&&e.includes('@')){fetch('https://formspree.io/f/xkoqqpdk',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,role:wr||'not specified',break_habit:wb||'not specified'})}).then(function(){}).catch(function(){});wd=true;rwl();}}
 
 rwl();
 </script>

@@ -158,6 +158,40 @@ a{text-decoration:none;color:inherit}
 .empty{text-align:center;padding:60px 20px;color:var(--text2)}
 .empty h3{font-family:'Playfair Display',Georgia,serif;font-size:20px;margin-bottom:8px;color:var(--text)}
 
+/* Profile */
+.profile-view{display:none;min-height:100vh}
+.profile-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;text-align:center;margin-bottom:24px}
+.profile-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--accent) 0%,#E8845C 100%);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:32px;font-weight:800;color:#fff;font-family:'Playfair Display',Georgia,serif}
+.profile-name{font-family:'Playfair Display',Georgia,serif;font-size:24px;font-weight:700;margin-bottom:4px}
+.profile-handle{font-size:14px;color:var(--text2);margin-bottom:20px}
+.profile-stats{display:flex;justify-content:center;gap:32px;padding:16px 0;border-top:1px solid var(--border)}
+.profile-stat{text-align:center}
+.profile-stat .num{font-size:22px;font-weight:800;color:var(--text);display:block}
+.profile-stat .lbl{font-size:12px;color:var(--text2);font-weight:500}
+.profile-interests{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
+.interest-tag{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid var(--border);color:var(--text2);background:var(--bg)}
+.interest-tag.active{border-color:var(--accent);background:var(--accent-light);color:var(--accent)}
+.profile-section{margin-bottom:24px}
+.profile-section h3{font-size:16px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.profile-section h3 span{font-size:13px;font-weight:500;color:var(--text2)}
+.streak-bar{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.streak-num{font-size:36px;font-weight:800;color:var(--accent);font-family:'Playfair Display',Georgia,serif;line-height:1}
+.streak-info{flex:1}
+.streak-label{font-size:14px;font-weight:700;margin-bottom:2px}
+.streak-sub{font-size:12px;color:var(--text2)}
+.streak-dots{display:flex;gap:6px;margin-top:8px}
+.streak-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600}
+.streak-dot.done{background:var(--accent-light);color:var(--accent)}
+.streak-dot.today{background:var(--accent);color:#fff}
+.streak-dot.future{background:var(--bg2);color:var(--text2)}
+.history-item{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--border)}
+.history-item:last-child{border-bottom:none}
+.history-cat{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.history-info{flex:1;min-width:0}
+.history-title{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.history-meta{font-size:12px;color:var(--text2)}
+.rec-why{font-size:12px;color:var(--accent);font-weight:500;margin-bottom:12px;font-style:italic}
+
 /* Animations */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .fade{animation:fadeUp .4s ease both}
@@ -175,13 +209,15 @@ a{text-decoration:none;color:inherit}
 <div id="home-view">
   <div class="container">
     <div class="header">
-      <div class="logo">ten<span class="dot">.</span></div>
+      <a href="index.html" class="logo" style="text-decoration:none">ten<span class="dot">.</span></a>
       <div class="header-actions">
         <button class="btn-outline" onclick="showView('write')">✍🏽 Write</button>
-        <a href="index.html" class="btn-outline" style="text-decoration:none">Waitlist</a>
+        <button class="btn-outline" onclick="showView('profile')" style="padding:8px 10px;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
       </div>
     </div>
-    <p class="tagline">Stories and ideas for busy people.</p>
+    <p class="tagline">Good morning, Alex. Here's what's new for you.</p>
     <div id="featured-area"></div>
     <div class="filters" id="filters"></div>
     <div class="cards" id="cards"></div>
@@ -217,6 +253,19 @@ a{text-decoration:none;color:inherit}
   </div>
 </div>
 
+<!-- Profile View -->
+<div class="profile-view" id="profile-view">
+  <div class="container">
+    <div class="reading-header">
+      <button class="back-btn" onclick="showView('home')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </button>
+      <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:700">Profile</h2>
+    </div>
+    <div id="profile-content"></div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script src="stories.js"></script>
@@ -237,10 +286,12 @@ function showView(view) {
   document.getElementById('home-view').style.display = 'none';
   document.getElementById('reading-view').style.display = 'none';
   document.getElementById('write-view').style.display = 'none';
+  document.getElementById('profile-view').style.display = 'none';
   
   if (view === 'home') { document.getElementById('home-view').style.display = 'block'; renderHome(); }
   if (view === 'reading') { document.getElementById('reading-view').style.display = 'block'; renderReading(); }
   if (view === 'write') { document.getElementById('write-view').style.display = 'block'; renderWrite(); }
+  if (view === 'profile') { document.getElementById('profile-view').style.display = 'block'; renderProfile(); }
   
   window.scrollTo(0, 0);
   currentView = view;
@@ -281,7 +332,7 @@ function renderHome() {
     var rtF = getReadTime(ft), ltF = getListenTime(ft);
     document.getElementById('featured-area').innerHTML = '<div class="featured fade" onclick="openStory(\'' + ft.id + '\')">' +
       '<div class="featured-glow"></div>' +
-      '<div class="featured-badge">⭐ Today\'s Pick</div>' +
+      '<div class="featured-badge">⭐ Picked For You</div>' +
       '<h2>' + ft.title + '</h2>' +
       '<div class="author">by ' + ft.author + '</div>' +
       '<div class="excerpt">' + ft.excerpt + '</div>' +
@@ -553,6 +604,93 @@ function submitWrite() {
     '<p>Audio will be auto-generated.<br>Your piece will be reviewed and published soon.</p>' +
     '<button class="btn-solid" style="padding:14px 32px;font-size:15px;border-radius:12px" onclick="showView(\'home\')">Back to Home</button>' +
     '</div></div>';
+}
+
+// ===== PROFILE =====
+var profileData = {
+  name: "Alex Rivera",
+  handle: "@alexreads",
+  joined: "March 2026",
+  interests: ["Stories", "Psychology", "Startups", "Culture", "Career"],
+  activeInterests: ["Stories", "Psychology", "Startups"]
+};
+
+function renderProfile() {
+  var likeCount = Object.keys(likedItems).filter(function(k) { return likedItems[k]; }).length;
+  var commentCount = Object.keys(userComments).reduce(function(sum, k) { return sum + (userComments[k] || []).length; }, 0);
+  var readCount = likeCount + 3; // simulated: they've read more than liked
+  
+  var days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+  var streakDots = days.map(function(d, i) {
+    if (i < 3) return '<div class="streak-dot done">' + d + '</div>';
+    if (i === 3) return '<div class="streak-dot today">' + d + '</div>';
+    return '<div class="streak-dot future">' + d + '</div>';
+  }).join('');
+  
+  // Reading history (simulated from liked/read items)
+  var history = STORIES.slice(0, 4).map(function(s) {
+    var catColor = s.category === 'Story' ? 'var(--accent)' : s.category === 'Learn' ? 'var(--green)' : 'var(--purple)';
+    return '<div class="history-item" style="cursor:pointer" onclick="openStory(\'' + s.id + '\')">' +
+      '<div class="history-cat" style="background:' + catColor + '"></div>' +
+      '<div class="history-info"><div class="history-title">' + s.title + '</div>' +
+      '<div class="history-meta">' + s.author + ' · ' + getReadTime(s) + ' min · ' + s.category + '</div></div>' +
+      '<span style="font-size:12px;color:var(--text2)">' + (likedItems[s.id] ? '❤️' : '') + '</span></div>';
+  }).join('');
+
+  // Recommended for you
+  var recs = STORIES.slice(4, 7).map(function(s) {
+    var catColor = s.category === 'Story' ? 'var(--accent)' : s.category === 'Learn' ? 'var(--green)' : 'var(--purple)';
+    return '<div class="history-item" style="cursor:pointer" onclick="openStory(\'' + s.id + '\')">' +
+      '<div class="history-cat" style="background:' + catColor + '"></div>' +
+      '<div class="history-info"><div class="history-title">' + s.title + '</div>' +
+      '<div class="history-meta">' + s.author + ' · ' + getReadTime(s) + ' min · ' + s.category + '</div></div></div>';
+  }).join('');
+
+  var interests = profileData.interests.map(function(t) {
+    var isActive = profileData.activeInterests.indexOf(t) > -1;
+    return '<span class="interest-tag ' + (isActive ? 'active' : '') + '" onclick="toggleInterest(\'' + t + '\')" style="cursor:pointer">' + t + '</span>';
+  }).join('');
+
+  document.getElementById('profile-content').innerHTML =
+    '<div class="profile-card fade">' +
+      '<div class="profile-avatar">' + profileData.name.charAt(0) + '</div>' +
+      '<div class="profile-name">' + profileData.name + '</div>' +
+      '<div class="profile-handle">' + profileData.handle + ' · Joined ' + profileData.joined + '</div>' +
+      '<div class="profile-stats">' +
+        '<div class="profile-stat"><span class="num">' + readCount + '</span><span class="lbl">Read</span></div>' +
+        '<div class="profile-stat"><span class="num">' + likeCount + '</span><span class="lbl">Liked</span></div>' +
+        '<div class="profile-stat"><span class="num">' + commentCount + '</span><span class="lbl">Comments</span></div>' +
+      '</div>' +
+      '<div style="margin-top:20px"><div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text2);margin-bottom:10px">Your Interests</div>' +
+      '<div class="profile-interests">' + interests + '</div>' +
+      '<div style="font-size:11px;color:var(--text2);margin-top:10px">Tap to customize your feed</div></div>' +
+    '</div>' +
+
+    '<div class="streak-bar fade">' +
+      '<div class="streak-num">4</div>' +
+      '<div class="streak-info"><div class="streak-label">Day Streak 🔥</div>' +
+      '<div class="streak-sub">Keep reading to grow your streak</div>' +
+      '<div class="streak-dots">' + streakDots + '</div></div></div>' +
+
+    '<div class="profile-section fade">' +
+      '<h3>📚 Reading History <span>(' + readCount + ' stories)</span></h3>' +
+      '<div class="card" style="padding:4px 16px;cursor:default">' + history + '</div></div>' +
+
+    '<div class="profile-section fade">' +
+      '<h3>✨ Recommended For You</h3>' +
+      '<div class="rec-why">Based on your interest in Stories and Psychology</div>' +
+      '<div class="card" style="padding:4px 16px;cursor:default">' + recs + '</div></div>' +
+
+    '<div style="padding:20px 0 40px;text-align:center">' +
+      '<button class="btn-outline" onclick="showView(\'home\')" style="margin:0 auto">← Back to Feed</button></div>';
+}
+
+function toggleInterest(tag) {
+  var idx = profileData.activeInterests.indexOf(tag);
+  if (idx > -1) { profileData.activeInterests.splice(idx, 1); }
+  else { profileData.activeInterests.push(tag); }
+  renderProfile();
+  showToast('Feed updated based on your interests');
 }
 
 // ===== INIT =====

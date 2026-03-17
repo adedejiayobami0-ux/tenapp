@@ -367,14 +367,14 @@ function renderHome(){
   } else { document.getElementById('featured-area').innerHTML=''; }
 
   // Filters
-  var filters=['All','Story','Learn','💡 Idea','💭 Thoughts'];
+  var filters=['All','Story','Learn','💡 Idea','💬 What\'s on your mind'];
   document.getElementById('filters').innerHTML=filters.map(function(f){
-    var key=f.replace('💡 ','').replace('💭 ','');
+    var key=f.replace('💡 ','').replace('💬 ','').replace("What's on your mind","WOYM");
     return'<button class="filter '+(currentFilter===key?'active':'')+'" onclick="currentFilter=\''+key+'\';renderHome()">'+f+'</button>';
   }).join('');
 
   // Thoughts input (show in All and Thoughts)
-  if(currentFilter==='All'||currentFilter==='Thoughts'){
+  if(currentFilter==='All'||currentFilter==='WOYM'){
     document.getElementById('thoughts-input-area').innerHTML=
       '<div class="thought-input-wrap fade"><div class="thought-avatar">A</div><div style="flex:1">'+
       '<textarea class="thought-input" id="thought-text" placeholder="What\u2019s on your mind?" rows="2"></textarea>'+
@@ -389,7 +389,7 @@ function renderHome(){
   }
 
   // Content
-  if(currentFilter==='Thoughts'){
+  if(currentFilter==='WOYM'){
     renderThoughts();return;
   }
 
@@ -409,9 +409,9 @@ function renderHome(){
   if(currentFilter==='All'){
     var allThoughts=(THOUGHTS||[]).concat(userThoughts);
     if(allThoughts.length>0){
-      html+='<div style="padding:16px 0 8px"><div style="font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px">💭 Latest Thoughts <span style="font-size:13px;font-weight:500;color:var(--text2)">('+ allThoughts.length+')</span></div></div>';
+      html+='<div style="padding:16px 0 8px"><div style="font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px">💬 What people are saying <span style="font-size:13px;font-weight:500;color:var(--text2)">('+ allThoughts.length+')</span></div></div>';
       html+=allThoughts.slice(0,3).map(function(t){return renderThoughtCard(t)}).join('');
-      if(allThoughts.length>3) html+='<div style="text-align:center;padding:8px"><button class="btn-outline" onclick="currentFilter=\'Thoughts\';renderHome()" style="margin:0 auto">See all thoughts →</button></div>';
+      if(allThoughts.length>3) html+='<div style="text-align:center;padding:8px"><button class="btn-outline" onclick="currentFilter=\'WOYM\';renderHome()" style="margin:0 auto">See more →</button></div>';
     }
   }
 
@@ -537,7 +537,7 @@ function renderThoughtCard(t){
 function renderThoughts(){
   var allThoughts=(THOUGHTS||[]).concat(userThoughts).sort(function(a,b){return(b.likes||0)-(a.likes||0)});
   document.getElementById('cards').innerHTML=allThoughts.map(function(t){return renderThoughtCard(t)}).join('')||
-    '<div class="empty"><h3>No thoughts yet</h3><p>Be the first to share one above.</p></div>';
+    '<div class="empty"><h3>Nothing here yet</h3><p>Be the first to share what\'s on your mind.</p></div>';
 }
 
 function postThought(){
@@ -546,7 +546,7 @@ function postThought(){
   if(!text)return;
   userThoughts.push({id:'t-user-'+Date.now(),author:'Alex Rivera',color:'#1A1A1A',time:'Just now',text:text,likes:0});
   localStorage.setItem('ten_thoughts',JSON.stringify(userThoughts));
-  el.value='';renderHome();showToast('Thought posted!');
+  el.value='';renderHome();showToast('Posted!');
 }
 
 // ===== READING =====
